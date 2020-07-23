@@ -2,6 +2,9 @@ package example;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GuessNumberGameTest {
@@ -63,5 +66,17 @@ public class GuessNumberGameTest {
         String result = guessNumberGame.guess("5678");
         // then
         assertEquals("0A0B", result);
+    }
+
+    @Test
+    public void should_return_false_when_invoke_isNumberValid_given_1357() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // given
+        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid",String.class);
+        method.setAccessible(true);
+        // when
+        Boolean result = (Boolean) method.invoke(guessNumberGame, "1357");
+        // then
+        assertEquals(false, result);
     }
 }

@@ -19,6 +19,10 @@ public class GuessNumberGame {
         return String.format("%dA%dB",countOfPosition,countOfNumber);
     }
 
+    private boolean isNumberValid(String number) {
+        return false;
+    }
+
     private int countIfPositionIsRight(int[] numberArr, int[] answerArr) {
         int count = 0;
         for (int i = 0; i < 4; i++) {
