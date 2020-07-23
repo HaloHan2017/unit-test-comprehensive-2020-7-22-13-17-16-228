@@ -69,7 +69,7 @@ public class GuessNumberGameTest {
     }
 
     @Test
-    public void should_return_false_when_invoke_isNumberValid_given_1357() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void should_return_true_when_invoke_isNumberValid_given_1357() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame();
         Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid",String.class);
@@ -78,5 +78,17 @@ public class GuessNumberGameTest {
         Boolean result = (Boolean) method.invoke(guessNumberGame, "1357");
         // then
         assertEquals(true, result);
+    }
+
+    @Test
+    public void should_return_false_when_invoke_isNumberValid_given_135() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // given
+        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid",String.class);
+        method.setAccessible(true);
+        // when
+        Boolean result = (Boolean) method.invoke(guessNumberGame, "135");
+        // then
+        assertEquals(false, result);
     }
 }
