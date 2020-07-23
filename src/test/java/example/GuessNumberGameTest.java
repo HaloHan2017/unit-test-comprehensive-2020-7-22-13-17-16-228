@@ -21,7 +21,7 @@ public class GuessNumberGameTest {
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answer);
         // when
-        String result = guessNumberGame.guess("1234");
+        String result = guessNumberGame.guess("1025");
         // then
         assertEquals("1A1B", result);
     }
