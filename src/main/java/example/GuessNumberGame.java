@@ -1,5 +1,8 @@
 package example;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class GuessNumberGame {
     private String answer;
     private IGenerator answerGenerator = new AnswerGenerator();
@@ -20,7 +23,16 @@ public class GuessNumberGame {
     }
 
     private boolean isNumberValid(String number) {
-        return false;
+        return number.length() == 4 && number.matches("[0-9]+") && isContainsDuplicateStr(number);
+    }
+
+    private boolean isContainsDuplicateStr(String number) {
+        Set<Character> set = new HashSet<>();
+        char[] chars = number.toCharArray();
+        for(char c:chars) {
+            set.add(c);
+        }
+        return set.size() == number.length();
     }
 
     private int countIfPositionIsRight(int[] numberArr, int[] answerArr) {

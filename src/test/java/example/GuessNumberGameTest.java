@@ -77,6 +77,6 @@ public class GuessNumberGameTest {
         // when
         Boolean result = (Boolean) method.invoke(guessNumberGame, "1357");
         // then
-        assertEquals(false, result);
+        assertEquals(true, result);
     }
 }
