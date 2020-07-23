@@ -1,6 +1,8 @@
 package example;
 
 import java.util.HashSet;
+import java.util.Random;
+import java.util.Scanner;
 import java.util.Set;
 
 public class GuessNumberGame {
@@ -11,16 +13,30 @@ public class GuessNumberGame {
         this.answer = answerGenerator.generateAnswer();
     }
 
+    public void playGuessGame(){
+        int guessCount = 0;
+        while (guessCount <= 6){
+            System.out.print("请输入您的数字（数字之间以空格隔开）：");
+            Scanner input = new Scanner(System.in);
+            String result = guess(input.nextLine().replaceAll(" ",""));
+            System.out.println(result);
+            if(!"4A0B".equals(result)){
+                guessCount++;
+            }else {
+                System.out.println("恭喜您赢得胜利！！！");
+                return;
+            }
+        }
+        System.out.println("6次机会已用完，很遗憾您没能赢得比赛，继续加油吧~~~");
+    }
+
     public String guess(String number) {
         if(!isNumberValid(number)){
             return "Wrong Input，Input again";
         }
-        // 拿到 number 和 answer，将其转换成 int[]
         int[] numberArr = convertNumberStringToArray(number);
         int[] answerArr = convertNumberStringToArray(answer);
-        // 计算 数字对 的 数量
         int countOfNumber = countIfNumberIsRightButPositionIsWrong(numberArr, answerArr);
-        // 计算 位置对 的 数量 （位置对的，数字一定对）
         int countOfPosition = countIfPositionIsRight(numberArr, answerArr);
         return String.format("%dA%dB",countOfPosition,countOfNumber);
     }
@@ -76,6 +92,22 @@ public class GuessNumberGame {
     public class AnswerGenerator implements IGenerator{
         public String generateAnswer() {
             return "1234";
+//            char[] chars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+//            Random random = new Random();
+//            int count = 0;
+//            StringBuilder stringBuilder = new StringBuilder();
+//            while (true) {
+//                char c = chars[random.nextInt(chars.length)];
+//                if (stringBuilder.indexOf(c + "") == -1) {
+//                    stringBuilder.append(c);
+//                    count++;
+//                    if (count == 4) {
+//                        break;
+//                    }
+//                }
+//
+//            }
+//            return stringBuilder.toString();
         }
     }
 }
