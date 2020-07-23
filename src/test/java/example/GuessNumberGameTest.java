@@ -95,4 +95,19 @@ public class GuessNumberGameTest {
         assertEquals(false, result2);
         assertEquals(false, result3);
     }
+
+    @Test
+    public void should_return_error_info_when_guess_number_is_not_valid_given_135_and_135a_and_1355() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        // given
+        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        String errorInfo = "Wrong Input，Input again";
+        // when
+        String result1 = guessNumberGame.guess("135");
+        String result2 = guessNumberGame.guess("135a");
+        String result3 = guessNumberGame.guess("1355");
+        // then
+        assertEquals(errorInfo, result1);
+        assertEquals(errorInfo, result2);
+        assertEquals(errorInfo, result3);
+    }
 }

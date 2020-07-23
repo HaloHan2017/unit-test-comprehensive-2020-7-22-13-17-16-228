@@ -12,6 +12,9 @@ public class GuessNumberGame {
     }
 
     public String guess(String number) {
+        if(!isNumberValid(number)){
+            return "Wrong Input，Input again";
+        }
         // 拿到 number 和 answer，将其转换成 int[]
         int[] numberArr = convertNumberStringToArray(number);
         int[] answerArr = convertNumberStringToArray(answer);
