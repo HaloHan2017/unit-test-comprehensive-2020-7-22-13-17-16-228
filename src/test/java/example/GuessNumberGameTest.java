@@ -81,26 +81,18 @@ public class GuessNumberGameTest {
     }
 
     @Test
-    public void should_return_false_when_invoke_isNumberValid_given_135() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public void should_return_false_when_invoke_isNumberValid_given_135_and_135a_and_1355() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame();
         Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid",String.class);
         method.setAccessible(true);
         // when
-        Boolean result = (Boolean) method.invoke(guessNumberGame, "135");
+        Boolean result1 = (Boolean) method.invoke(guessNumberGame, "135");
+        Boolean result2 = (Boolean) method.invoke(guessNumberGame, "135a");
+        Boolean result3 = (Boolean) method.invoke(guessNumberGame, "1355");
         // then
-        assertEquals(false, result);
-    }
-
-    @Test
-    public void should_return_false_when_invoke_isNumberValid_given_135a() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
-        Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid",String.class);
-        method.setAccessible(true);
-        // when
-        Boolean result = (Boolean) method.invoke(guessNumberGame, "135a");
-        // then
-        assertEquals(false, result);
+        assertEquals(false, result1);
+        assertEquals(false, result2);
+        assertEquals(false, result3);
     }
 }
