@@ -42,7 +42,7 @@ public class GuessNumberGame {
     }
 
     private boolean isNumberValid(String number) {
-        return number.length() == 4 && number.matches("[0-9]+") && isContainsDuplicateStr(number);
+        return number.length() == 4 && number.matches("[0-9]+") && !isContainsDuplicateStr(number);
     }
 
     private boolean isContainsDuplicateStr(String number) {
@@ -51,7 +51,7 @@ public class GuessNumberGame {
         for(char c:chars) {
             set.add(c);
         }
-        return set.size() == number.length();
+        return set.size() != number.length();
     }
 
     private int countIfPositionIsRight(int[] numberArr, int[] answerArr) {
@@ -90,6 +90,7 @@ public class GuessNumberGame {
     }
 
     public class AnswerGenerator implements IGenerator{
+        @Override
         public String generateAnswer() {
             return "1234";
 //            char[] chars = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
@@ -109,5 +110,10 @@ public class GuessNumberGame {
 //            }
 //            return stringBuilder.toString();
         }
+    }
+
+    public static void main(String[] args) {
+        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        guessNumberGame.playGuessGame();
     }
 }
