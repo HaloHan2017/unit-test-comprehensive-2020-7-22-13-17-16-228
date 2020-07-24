@@ -1,17 +1,21 @@
 package example;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.BDDMockito.given;
 
 public class GuessNumberGameTest {
     @Test
     public void should_return_4A0B_when_guess_1234_given_1234() {
+        AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
+        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
         // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
         String result = guessNumberGame.guess("1234");
         // then
@@ -20,8 +24,10 @@ public class GuessNumberGameTest {
 
     @Test
     public void should_return_1A1B_when_guess_1025_given_1234() {
+        AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
+        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
         // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
         String result = guessNumberGame.guess("1025");
         // then
@@ -30,8 +36,10 @@ public class GuessNumberGameTest {
 
     @Test
     public void should_return_2A2B_when_guess_1243_given_1234() {
+        AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
+        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
         // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
         String result = guessNumberGame.guess("1243");
         // then
@@ -40,8 +48,10 @@ public class GuessNumberGameTest {
 
     @Test
     public void should_return_0A4B_when_guess_4321_given_1234() {
+        AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
+        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
         // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
         String result = guessNumberGame.guess("4321");
         // then
@@ -50,8 +60,10 @@ public class GuessNumberGameTest {
 
     @Test
     public void should_return_0A2B_when_guess_2107_given_1234() {
+        AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
+        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
         // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
         String result = guessNumberGame.guess("2107");
         // then
@@ -60,8 +72,10 @@ public class GuessNumberGameTest {
 
     @Test
     public void should_return_0A0B_when_guess_5678_given_1234() {
+        AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
+        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
         // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
         String result = guessNumberGame.guess("5678");
         // then
@@ -70,9 +84,11 @@ public class GuessNumberGameTest {
 
     @Test
     public void should_return_true_when_invoke_isNumberValid_given_1357() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
+        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
         // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
-        Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid",String.class);
+        GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
+        Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid", String.class);
         method.setAccessible(true);
         // when
         Boolean result = (Boolean) method.invoke(guessNumberGame, "1357");
@@ -80,11 +96,16 @@ public class GuessNumberGameTest {
         assertEquals(true, result);
     }
 
+
+    // todo split the test case to 3
     @Test
     public void should_return_false_when_invoke_isNumberValid_given_135_and_135a_and_1355() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
-        Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid",String.class);
+        AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
+        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        // given
+        GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
+        Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid", String.class);
         method.setAccessible(true);
         // when
         Boolean result1 = (Boolean) method.invoke(guessNumberGame, "135");
@@ -99,7 +120,10 @@ public class GuessNumberGameTest {
     @Test
     public void should_return_error_info_when_guess_number_is_not_valid_given_135_and_135a_and_1355() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         // given
-        GuessNumberGame guessNumberGame = new GuessNumberGame();
+        AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
+        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        // given
+        GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         String errorInfo = "Wrong Input，Input again";
         // when
         String result1 = guessNumberGame.guess("135");
