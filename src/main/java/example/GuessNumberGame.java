@@ -32,11 +32,17 @@ public class GuessNumberGame {
         if (!isNumberValid(number)) {
             return "Wrong Input，Input again";
         }
-        char[] numberCharArray = number.toCharArray();
-        char[] answerCharArray = answer.toCharArray();
-        int countOfNumber = countIfNumberIsRightButPositionIsWrong(numberCharArray, answerCharArray);
-        int countOfPosition = countIfPositionIsRight(numberCharArray, answerCharArray);
-        return String.format("%dA%dB", countOfPosition, countOfNumber);
+        int countRightPositionAndRightNumber = 0;
+        int countRightPositionAndWrongNumber = 0;
+        for (int i = 0; i < number.length(); i++) {
+            int index = answer.indexOf(number.charAt(i));
+            if(index != -1 && index == i){
+                countRightPositionAndRightNumber++;
+            }else if(index != -1 && index != i){
+                countRightPositionAndWrongNumber++;
+            }
+        }
+        return String.format("%dA%dB", countRightPositionAndRightNumber, countRightPositionAndWrongNumber);
     }
 
     private boolean isNumberValid(String number) {
@@ -50,27 +56,5 @@ public class GuessNumberGame {
             set.add(c);
         }
         return set.size() != number.length();
-    }
-
-    private int countIfPositionIsRight(char[] numberArr, char[] answerArr) {
-        int count = 0;
-        for (int i = 0; i < 4; i++) {
-            if (answerArr[i] == numberArr[i]) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    private int countIfNumberIsRightButPositionIsWrong(char[] numberArr, char[] answerArr) {
-        int count = 0;
-        for (int i = 0; i < answerArr.length; i++) {
-            for (int j = 0; j < numberArr.length; j++) {
-                if (answerArr[i] == numberArr[j] && i != j) {
-                    count++;
-                }
-            }
-        }
-        return count;
     }
 }
