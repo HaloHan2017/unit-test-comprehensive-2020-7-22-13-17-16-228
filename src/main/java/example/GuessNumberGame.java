@@ -14,18 +14,18 @@ public class GuessNumberGame {
     public void playGuessGame() {
         int guessCount = 0;
         while (guessCount <= 6) {
-            System.out.print("请输入您的数字（数字之间以空格隔开）：");
+            System.out.print("Please enter your number (separated by Spaces) :");
             Scanner input = new Scanner(System.in);
             String result = guess(input.nextLine().replace(" ", ""));
             System.out.println(result);
             if (!"4A0B".equals(result)) {
                 guessCount++;
             } else {
-                System.out.println("恭喜您赢得胜利！！！");
+                System.out.println("Congratulations on your victory!!!");
                 return;
             }
         }
-        System.out.println("6次机会已用完，很遗憾您没能赢得比赛，继续加油吧~~~");
+        System.out.println("Six chances have been used up. It's a pity that you didn't win the game. Keep up the good work");
     }
 
     public String guess(String number) {
