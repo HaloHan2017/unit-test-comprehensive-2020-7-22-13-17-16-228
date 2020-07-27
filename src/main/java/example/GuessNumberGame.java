@@ -1,6 +1,7 @@
 package example;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -42,9 +43,9 @@ public class GuessNumberGame {
         int countRightPositionAndWrongNumber = 0;
         for (int i = 0; i < number.length(); i++) {
             int index = answer.indexOf(number.charAt(i));
-            if(index != -1 && index == i){
+            if (index != -1 && index == i) {
                 countRightPositionAndRightNumber++;
-            }else if(index != -1 && index != i){
+            } else if (index != -1 && index != i) {
                 countRightPositionAndWrongNumber++;
             }
         }
@@ -58,8 +59,8 @@ public class GuessNumberGame {
     private boolean isContainsDuplicateStr(String number) {
         Set<Character> set = new HashSet<>();
         char[] chars = number.toCharArray();
-        for (char c : chars) {
-            set.add(c);
+        for (char ch : chars) {
+            set.add(ch);
         }
         return set.size() != number.length();
     }
