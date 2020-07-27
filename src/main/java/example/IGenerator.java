@@ -1,5 +1,7 @@
 package example;
 
+import java.security.NoSuchAlgorithmException;
+
 public interface IGenerator{
-    String generateAnswer();
+    String generateAnswer() throws NoSuchAlgorithmException;
 }

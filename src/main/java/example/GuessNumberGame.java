@@ -1,5 +1,6 @@
 package example;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -7,7 +8,7 @@ import java.util.Set;
 public class GuessNumberGame {
     private String answer;
 
-    public GuessNumberGame(AnswerGenerator answerGenerator) {
+    public GuessNumberGame(AnswerGenerator answerGenerator) throws NoSuchAlgorithmException {
         this.answer = answerGenerator.generateAnswer();
     }
 
