@@ -13,7 +13,7 @@ public class AnswerGenerator implements IGenerator {
         StringBuilder stringBuilder = new StringBuilder();
         while (true) {
             char randomChar = chars[random.nextInt(chars.length)];
-            if (stringBuilder.indexOf(randomChar + "") == -1) {
+            if (stringBuilder.indexOf(String.valueOf(randomChar)) == -1) {
                 stringBuilder.append(randomChar);
                 count++;
                 if (count == 4) {
