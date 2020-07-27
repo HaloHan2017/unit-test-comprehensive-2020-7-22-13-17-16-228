@@ -12,9 +12,9 @@ public class AnswerGenerator implements IGenerator {
         int count = 0;
         StringBuilder stringBuilder = new StringBuilder();
         while (true) {
-            char c = chars[random.nextInt(chars.length)];
-            if (stringBuilder.indexOf(c + "") == -1) {
-                stringBuilder.append(c);
+            char randomChar = chars[random.nextInt(chars.length)];
+            if (stringBuilder.indexOf(randomChar + "") == -1) {
+                stringBuilder.append(randomChar);
                 count++;
                 if (count == 4) {
                     break;
