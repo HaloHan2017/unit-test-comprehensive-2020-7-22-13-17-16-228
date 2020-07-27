@@ -1,7 +1,6 @@
 package example;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -9,7 +8,7 @@ import java.util.logging.Logger;
 
 public class GuessNumberGame {
     private static final String THE_FLAG_OF_WIN = "4A0B";
-    private String answer;
+    private final String answer;
     private final Logger logger = Logger.getLogger(GuessNumberGame.class.getName());
 
     public GuessNumberGame(AnswerGenerator answerGenerator) throws NoSuchAlgorithmException {
