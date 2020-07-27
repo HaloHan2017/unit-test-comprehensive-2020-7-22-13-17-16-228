@@ -14,9 +14,9 @@ public class GuessNumberGame {
 
     public void playGuessGame() {
         int guessCount = 0;
+        Scanner input = new Scanner(System.in);
         while (guessCount <= 6) {
             System.out.print("Please enter your number (separated by Spaces) :");
-            Scanner input = new Scanner(System.in);
             String result = guess(input.nextLine().replace(" ", ""));
             System.out.println(result);
             if (!"4A0B".equals(result)) {
