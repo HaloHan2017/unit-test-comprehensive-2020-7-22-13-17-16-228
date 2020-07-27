@@ -23,10 +23,12 @@ public class GuessNumberGame {
                 guessCount++;
             } else {
                 System.out.println("Congratulations on your victory!!!");
+                input.close();
                 return;
             }
         }
         System.out.println("Six chances have been used up. It's a pity that you didn't win the game. Keep up the good work");
+        input.close();
     }
 
     public String guess(String number) {
