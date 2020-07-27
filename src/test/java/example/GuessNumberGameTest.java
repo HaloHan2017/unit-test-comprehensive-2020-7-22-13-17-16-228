@@ -7,7 +7,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.security.NoSuchAlgorithmException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 
 public class GuessNumberGameTest {
@@ -97,7 +97,7 @@ public class GuessNumberGameTest {
         // when
         Boolean result = (Boolean) method.invoke(guessNumberGame, "1357");
         // then
-        assertEquals(true, result);
+        assertTrue(result);
     }
 
 
@@ -116,9 +116,9 @@ public class GuessNumberGameTest {
         Boolean result2 = (Boolean) method.invoke(guessNumberGame, "135a");
         Boolean result3 = (Boolean) method.invoke(guessNumberGame, "1355");
         // then
-        assertEquals(false, result1);
-        assertEquals(false, result2);
-        assertEquals(false, result3);
+        assertFalse(result1);
+        assertFalse(result2);
+        assertFalse(result3);
     }
 
     @Test
