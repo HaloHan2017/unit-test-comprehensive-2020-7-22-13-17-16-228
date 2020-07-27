@@ -11,10 +11,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.BDDMockito.given;
 
 public class GuessNumberGameTest {
+
+    public static final String MOCK_VALUE = "1234";
+
     @Test
     public void should_return_4A0B_when_guess_1234_given_1234() throws NoSuchAlgorithmException {
         AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
-        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        given(answerGeneratorMock.generateAnswer()).willReturn(MOCK_VALUE);
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
@@ -26,7 +29,7 @@ public class GuessNumberGameTest {
     @Test
     public void should_return_1A1B_when_guess_1025_given_1234() throws NoSuchAlgorithmException {
         AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
-        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        given(answerGeneratorMock.generateAnswer()).willReturn(MOCK_VALUE);
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
@@ -38,7 +41,7 @@ public class GuessNumberGameTest {
     @Test
     public void should_return_2A2B_when_guess_1243_given_1234() throws NoSuchAlgorithmException {
         AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
-        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        given(answerGeneratorMock.generateAnswer()).willReturn(MOCK_VALUE);
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
@@ -50,7 +53,7 @@ public class GuessNumberGameTest {
     @Test
     public void should_return_0A4B_when_guess_4321_given_1234() throws NoSuchAlgorithmException {
         AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
-        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        given(answerGeneratorMock.generateAnswer()).willReturn(MOCK_VALUE);
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
@@ -62,7 +65,7 @@ public class GuessNumberGameTest {
     @Test
     public void should_return_0A2B_when_guess_2107_given_1234() throws NoSuchAlgorithmException {
         AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
-        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        given(answerGeneratorMock.generateAnswer()).willReturn(MOCK_VALUE);
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
@@ -74,7 +77,7 @@ public class GuessNumberGameTest {
     @Test
     public void should_return_0A0B_when_guess_5678_given_1234() throws NoSuchAlgorithmException {
         AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
-        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        given(answerGeneratorMock.generateAnswer()).willReturn(MOCK_VALUE);
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         // when
@@ -86,7 +89,7 @@ public class GuessNumberGameTest {
     @Test
     public void should_return_true_when_invoke_isNumberValid_given_1357() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchAlgorithmException {
         AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
-        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        given(answerGeneratorMock.generateAnswer()).willReturn(MOCK_VALUE);
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid", String.class);
@@ -103,7 +106,7 @@ public class GuessNumberGameTest {
     public void should_return_false_when_invoke_isNumberValid_given_135_and_135a_and_1355() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchAlgorithmException {
         // given
         AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
-        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        given(answerGeneratorMock.generateAnswer()).willReturn(MOCK_VALUE);
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         Method method = GuessNumberGame.class.getDeclaredMethod("isNumberValid", String.class);
@@ -122,7 +125,7 @@ public class GuessNumberGameTest {
     public void should_return_error_info_when_guess_number_is_not_valid_given_135_and_135a_and_1355() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, NoSuchAlgorithmException {
         // given
         AnswerGenerator answerGeneratorMock = Mockito.mock(AnswerGenerator.class);
-        given(answerGeneratorMock.generateAnswer()).willReturn("1234");
+        given(answerGeneratorMock.generateAnswer()).willReturn(MOCK_VALUE);
         // given
         GuessNumberGame guessNumberGame = new GuessNumberGame(answerGeneratorMock);
         String errorInfo = "Wrong Input，Input again";
