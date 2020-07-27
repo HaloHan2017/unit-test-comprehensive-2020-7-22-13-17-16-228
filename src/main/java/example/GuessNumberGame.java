@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class GuessNumberGame {
+    private static final String THE_FLAG_OF_WIN = "4A0B";
     private String answer;
 
     public GuessNumberGame(AnswerGenerator answerGenerator) throws NoSuchAlgorithmException {
@@ -19,7 +20,7 @@ public class GuessNumberGame {
             System.out.print("Please enter your number (separated by Spaces) :");
             String result = guess(input.nextLine().replace(" ", ""));
             System.out.println(result);
-            if (!"4A0B".equals(result)) {
+            if (!THE_FLAG_OF_WIN.equals(result)) {
                 guessCount++;
             } else {
                 System.out.println("Congratulations on your victory!!!");
