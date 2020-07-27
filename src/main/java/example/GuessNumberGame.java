@@ -4,10 +4,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public class GuessNumberGame {
     private static final String THE_FLAG_OF_WIN = "4A0B";
     private String answer;
+    private final Logger logger = Logger.getLogger(GuessNumberGame.class.getName());
 
     public GuessNumberGame(AnswerGenerator answerGenerator) throws NoSuchAlgorithmException {
         this.answer = answerGenerator.generateAnswer();
@@ -17,18 +19,18 @@ public class GuessNumberGame {
         int guessCount = 0;
         Scanner input = new Scanner(System.in);
         while (guessCount <= 6) {
-            System.out.print("Please enter your number (separated by Spaces) :");
+            logger.info("Please enter your number (separated by Spaces) :");
             String result = guess(input.nextLine().replace(" ", ""));
-            System.out.println(result);
+            logger.info(result);
             if (!THE_FLAG_OF_WIN.equals(result)) {
                 guessCount++;
             } else {
-                System.out.println("Congratulations on your victory!!!");
+                logger.info("Congratulations on your victory!!!");
                 input.close();
                 return;
             }
         }
-        System.out.println("Six chances have been used up. It's a pity that you didn't win the game. Keep up the good work");
+        logger.info("Six chances have been used up. It's a pity that you didn't win the game. Keep up the good work");
         input.close();
     }
 
